@@ -1,0 +1,30 @@
+.containerPfrl{
+    position: absolute;
+    top: 50px;
+    left: 350px;
+    width: 800px;
+    height: 500px;
+    background-color: rgb(204, 234, 224);
+    border-radius: 2%;
+}
+.photoPrf{
+    width: 150px;
+    height: 150px;
+}
+.flxPrf{
+    display: flex;
+    justify-content: space-evenly;
+}
+.desc{
+    margin-left: 20px;
+}
+.btnSttg{
+    position: relative;
+    top: 400px;
+    left:980px;
+    padding: 2px;
+    height: 60px;
+    width: 110px;
+    z-index: 50px;
+    background-color: rgb(111, 111, 209);
+}

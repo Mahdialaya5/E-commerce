@@ -1,0 +1,39 @@
+#backH{ 
+   width: 100%;
+    height:860px;
+    background-color: rgb(90, 90, 186);
+}
+body{
+    margin: 0;
+}
+#dsH{
+    width: 55%;
+    background-image: url("./pct.png");
+    background-repeat: no-repeat;
+  height: 500px;
+ }
+#flxh{
+    margin-top: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#nav{
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: 700px;
+}
+.n{
+   font-size:x-large;
+   background-color: rgb(90, 90, 186);
+   border:hidden;
+   color: #fff;
+}
+
+#hh{
+    color: #fff;
+    font-size: 42px;
+    line-height: 50px;
+    font-weight: 400;
+    font-style: italic;
+}
