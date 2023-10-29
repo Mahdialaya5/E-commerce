@@ -2,18 +2,20 @@ import React, { useState } from "react";
 import CardList from "../cardList/cardList";
 import Cards from "../cards/Cards";
 import "./products.css";
-function Products({
-  products = [1, 2, 3, 4, 5, 8, 5, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 5,5,5],
-  productsPerPage = 6,})
-{
-  const [currentPage, setCurrentPage] = useState(1);
+import { useSelector } from "react-redux";
 
+function Products(){
+
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const  productsPerPage = 6
+  const products=useSelector(state=> state.productReducer.products)
   // Calculate pagination
   const totalPages = Math.ceil(products.length / productsPerPage);
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = products.slice(indexOfFirstProduct,indexOfLastProduct);
-
+console.log(products);
   // Handle pagination actions
   const handleNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
@@ -26,7 +28,7 @@ function Products({
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
+console.log(currentProducts);
   return (
     <div id="products">
       <div className="slct">
@@ -39,16 +41,14 @@ function Products({
           <label>Tablette</label>
         </div>
         <div className="sousslct">
-          <input className="chkd" type="checkbox" />
+          <input className="chkd" type="checkbox"  />
           <label>Smartphone</label>
         </div>
       </div>
       <hr />
-      <div className="cards">
-        {currentProducts.map((el) => (
-          <Cards el={el} />
-        ))}
-      </div>
+   {  <div className="cards">
+        {currentProducts.map((el) =>   <Cards el={el} />)}
+        </div>}
       <div className="pagination">
         <button
           className="btnPrvs"

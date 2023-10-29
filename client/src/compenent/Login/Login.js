@@ -3,6 +3,7 @@ import "./login.css"
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { loginUser } from '../../redux/action_user'
+import Alert from '../Alert/Alert'
 
 
 function Login() {
@@ -32,6 +33,9 @@ function Login() {
     <label htmlFor="password">Password</label>
     <input type="password" onChange={(e)=>setPassword(e.target.value)}   placeholder="Password" id="password" />
     <button id='b' onClick={onSubmit} >Log In</button>
+
+    <Alert/>
+   
     <div className="social">
       <Link  to={"/register"} >Sign up</Link>
     </div>

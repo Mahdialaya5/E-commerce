@@ -10,10 +10,8 @@ function EditProduct() {
      <div className="shape" />
    </div>
    <form  id='fr'  >
-     <label htmlFor="username">title</label>
+     <label     htmlFor="username">title</label>
      <input type="text"   placeholder="title" id="username" />
-     <label htmlFor="password">description</label>
-     <input type="text" placeholder="desc" id="password" />
      <label htmlFor="password">price</label>
      <input type="text" placeholder="price" id="password" />
      <button id='b'  >ok</button>

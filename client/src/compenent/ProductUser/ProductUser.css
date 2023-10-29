@@ -1,0 +1,31 @@
+.ProductUser{
+    background-color: rgb(227, 226, 226);
+    width: 280px;
+    height: 350px;
+position:absolute;
+left: 600px;
+top: 120px;
+border-radius: 3%;
+overflow-x: hidden;
+}
+.btn-delete{
+    border: none;
+    background: none;
+    width: 20px;
+    margin-top: 0;
+    position: relative;
+    bottom:  10px;
+}
+.flx_li{
+    display: flex;
+    justify-content: space-around
+}
+.fa-regular{
+    position: relative;
+    top: 10px;
+}
+.productUser{
+position: relative;
+bottom: 10px;
+width: 20px;
+}

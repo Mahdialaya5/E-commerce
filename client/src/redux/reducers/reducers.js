@@ -1,4 +1,4 @@
-import { GET_PRODUCT_LOADING, GET_PRODUCT_SUCCESS,ADD_PRODUCT_SUCCESS,ADD_PRODUCT_FAIL, GET_PRODUCT_FAIL, GET_ONEPRODUCT_SUCCESS, GET_ONEPRODUCT_FAIL, EDIT_PRODUCT_SUCCESS} from "../const "
+import { GET_PRODUCT_LOADING, GET_PRODUCT_SUCCESS,ADD_PRODUCT_SUCCESS,ADD_PRODUCT_FAIL, GET_PRODUCT_FAIL, GET_ONEPRODUCT_SUCCESS, GET_ONEPRODUCT_FAIL, EDIT_PRODUCT_SUCCESS, GET_BY_USER} from "../const "
 
 
   const initialState = {
@@ -9,6 +9,7 @@ import { GET_PRODUCT_LOADING, GET_PRODUCT_SUCCESS,ADD_PRODUCT_SUCCESS,ADD_PRODUC
    }
   
 export const productReducer = (state = initialState, { type, payload }) => {
+  console.log(state.products);
     switch (type) {
         case  GET_PRODUCT_LOADING:
                   return { ...state, loading: true }
@@ -17,7 +18,7 @@ export const productReducer = (state = initialState, { type, payload }) => {
         case GET_PRODUCT_FAIL:
                   return { ...state, errors: payload, loading: false }
         case ADD_PRODUCT_SUCCESS:
-                 return { ...state, product: [...state.products, payload.product] }
+                     return { ...state, products: [...state.products, payload.product]}
         case ADD_PRODUCT_FAIL:
                    return { ...state, errors: payload }
         case GET_ONEPRODUCT_SUCCESS:
@@ -26,7 +27,7 @@ export const productReducer = (state = initialState, { type, payload }) => {
                     return { ...state, errors: payload }
         case EDIT_PRODUCT_SUCCESS:
                     return { ...state, products: state.products.map(el => el._id == payload._id ? payload : el) }
-                   
+      
                     default:
             return state
     }

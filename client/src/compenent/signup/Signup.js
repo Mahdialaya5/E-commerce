@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { addUser } from '../../redux/action_user'
 import "./signup.css"
 import { Link, useNavigate } from 'react-router-dom'
+import Alert from '../Alert/Alert'
 
 function Signup() {
     const [newemail, setemail] = useState("")
@@ -31,6 +32,7 @@ return (
  <option>company</option>
   </select>
   <button onClick={onSubmit} id='b'>register</button>
+  <Alert/>
     <div className="social">
       <Link  to={"/login"} >Login</Link>
     </div>

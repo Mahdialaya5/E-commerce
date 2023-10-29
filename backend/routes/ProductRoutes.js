@@ -7,7 +7,7 @@ const isAuth = require('../middlewares/isAuth')
 //add new product
 router.post("/", upload("products").single("file"),async (req, res) => {
     try {
-   
+   console.log(req.file);
        const url = `${req.protocol}://${req.get("host")}/${req.file.path}`
         const newProduct = new Product(req.body)
         console.log(url);
@@ -19,11 +19,12 @@ router.post("/", upload("products").single("file"),async (req, res) => {
         res.status(400).send(error.message)
     }}
 )
+
 //get all products
 router.get("/", async (req, res) => {
     try{
 
-        const products= await Product.findById().populate("seller")
+        const products= await Product.find().populate("seller")
       
         res.send(products)
     }
@@ -32,6 +33,7 @@ console.log(error)
 res.status(400).send(error.message)
     }
 })
+
 //get one product
 router.get("/:id",isAuth(), async (req, res) => {
     try {
@@ -41,7 +43,8 @@ router.get("/:id",isAuth(), async (req, res) => {
     catch (error) {
         console.log(error)
         res.status(400).send(error.message)
-    }})
+}})
+
 //edit product
 router.put("/:id",upload("products").single("file"),isAuth(), async (req, res) => {
     try {

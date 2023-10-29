@@ -52,6 +52,7 @@
 .log{
     position: relative;
     top: 180px;
+    left:30px;
   height: auto;
    background-color:rgb(134, 157, 187);
     border: none;
@@ -60,6 +61,7 @@
 .sig{
     position: relative;
     top: 220px;
+    left:10px;
     right: 25px;
     height: auto;
     background-color:rgb(134, 157, 187);

@@ -1,4 +1,4 @@
-import {GET_PRODUCT_LOADING, GET_PRODUCT_SUCCESS, GET_PRODUCT_FAIL, ADD_PRODUCT_SUCCESS,GET_ONEPRODUCT_SUCCESS ,GET_ONEPRODUCT_FAIL, ADD_PRODUCT_FAIL, EDIT_PRODUCT_SUCCESS, EDIT_PRODUCT_FAIL } from "./const "
+import {GET_PRODUCT_LOADING, GET_PRODUCT_SUCCESS, GET_PRODUCT_FAIL, ADD_PRODUCT_SUCCESS,GET_ONEPRODUCT_SUCCESS ,GET_ONEPRODUCT_FAIL, ADD_PRODUCT_FAIL, EDIT_PRODUCT_SUCCESS, EDIT_PRODUCT_FAIL, GET_BY_USER, SEARCHP } from "./const "
 import axios from "axios"
 
 export const getAllProduct = () => async (dispatch) => {
@@ -11,7 +11,6 @@ export const getAllProduct = () => async (dispatch) => {
         dispatch({ type: GET_PRODUCT_FAIL, payload: error })
         console.log(error)
     }}
-
 export const addProduct=(productBody,navigate)=>async(dispatch)=>{
       try{
         const resProduct = await axios.post('http://localhost:5000/api/product/',productBody)
@@ -19,6 +18,7 @@ export const addProduct=(productBody,navigate)=>async(dispatch)=>{
           type:ADD_PRODUCT_SUCCESS,
           payload: resProduct.data
         })
+      
 navigate('/products')
     }
 
@@ -29,6 +29,10 @@ navigate('/products')
             payload:err.message
         });
       }}
+
+export const searchProduct= (searchPRDT) => {
+        return { type: SEARCHP, payload:searchPRDT }
+       }
 
 export const getOneProduct= (id) => async (dispatch) => {
         const token=localStorage.getItem('token');

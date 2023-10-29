@@ -6,6 +6,7 @@ const productSchema = new mongoose.Schema({
     price: { type: Number,required:true },
     img:{type:String},
   seller: { type: mongoose.Schema.Types.ObjectId,ref:User },
+  category:{type:String,enum:["smartphone","pc","tablette"]}
     })
 const Product = mongoose.model("product", productSchema)
 module.exports = Product

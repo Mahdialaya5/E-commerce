@@ -8,6 +8,7 @@ function Addproduct() {
   const [ Title, settitle] = useState("");
   const [Price, setprice] = useState("")
   const [image, setimage] = useState()
+  const [Category, setCategory] = useState("pc")
   const navigate = useNavigate()
   const dispatch = useDispatch()
 console.log(user._id);
@@ -19,6 +20,7 @@ console.log(user._id);
    data.append("price", Price)
    data.append("file",image)
    data.append("seller",user._id)
+   data.append("category",Category)
   dispatch(addProduct(data,navigate))
 };
 
@@ -37,6 +39,13 @@ return (
      <input type="file" placeholder="file" id="password"   onChange={(e)=>setimage(e.target.files[0])} />
      <label htmlFor="password">Price</label>
      <input type="text" placeholder="price" id="password"   onChange={(e)=>setprice(e.target.value)}   />
+     <label htmlFor="password">category</label>
+      <select placeholder="price" id="password"     onChange={(e)=>setCategory(e.target.value)}   >
+      <option  value={"pc"} >pc</option>
+      <option  value={"smartphone"}  >Smartphone</option>
+      <option  value={"tablette"}  >Tablette</option>
+     </select>
+   
      <button id='b' onClick={handleClick}  >ok</button>
      <div className="social">
        <Link  to={"/products"} >return</Link>

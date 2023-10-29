@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_USER_FAIL, ADD_USER_SUCCESS, EDIT, EDIT_FAIL, GET_CURRENT_FAIL, GET_CURRENT_SUCCESS, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT } from "./const_user";
+import { ADD_USER_FAIL, ADD_USER_SUCCESS, EDIT, EDIT_FAIL, GET_CURRENT_FAIL, GET_CURRENT_SUCCESS, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, SEARCH } from "./const_user";
 
 
 export const addUser = (userBody,navigate) => async (dispatch) => {
@@ -72,3 +72,7 @@ export const editUser = (id, userBody, navigate) => async (dispatch) => {
       });
       
     } }
+
+export const searchUser= (searchusr) => {
+      return { type: SEARCH, payload:searchusr }
+     }

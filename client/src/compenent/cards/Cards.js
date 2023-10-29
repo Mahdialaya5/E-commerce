@@ -1,13 +1,16 @@
 import React from 'react'
 
 function Cards({el}) {
+  console.log(el);
   return (<>
-    <div className="card" style={{width: '18rem',background:" rgb(147, 214, 191)",borderRadius:'2%',backgroundColor: "rgb(148 135 177)"}}>
+    <div className="card"   style={{width: '18rem',background:" rgb(147, 214, 191)",borderRadius:'2%',backgroundColor: "rgb(148 135 177)"}}>
    <div className="card-body">
-    <img src='' alt='..'  style={{width: '18px'}}  />
-    <h5 className="card-title">DEll</h5>
-    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <h5>price</h5>
+    <img  src={el.img} alt='..'  style={{width: '80px',height:"80px",margin:"2px",borderRadius:'13%'}}  />
+    <h2 className="card-title">{el.name}</h2>
+  <h3></h3>
+  <h3>by:{el.seller&&el.seller.name} </h3>
+    <h5>price:{el.price}</h5>
+    
     </div>
 </div>
 </>

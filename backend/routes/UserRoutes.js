@@ -56,22 +56,25 @@ router.get("/current", isAuth(), (req, res) => {
 })
 //edituser
 router.put("/:id",upload("user").single("file"),isAuth(), async (req, res) => {
-    const { name} = req.body
+    const { password,name} = req.body
     try {
         const existName = await User.findOne({ name })
            if (existName &&existName._id==!req.params.id) {
             return res.status(400).send({ msg:"name exist,please change user name"})
         }
-      const result = await User.updateOne({ _id: req.params.id }, { ...req.body })
-     const UserUpdated = await  User.findOne({ _id: req.params.id })
-         
-         if(req.file)
+      if(req.body.password){
+            const hashedPassword = await bcrypt.hash(password, 10)
+             req.body.password=hashedPassword
+           }
+           const result = await User.updateOne({ _id: req.params.id }, { ...req.body })
+           const UserUpdated = await  User.findOne({ _id: req.params.id })
+      if(req.file)
              { const url = `${req.protocol}://${req.get("host")}/${req.file.path}`
              UserUpdated.img =url
               await UserUpdated.save()
                 }
              console.log((result.modifiedCount) || (req.file));
-         if ((result.modifiedCount) || (req.file)) {
+         if ((result.modifiedCount) || (req.file)||(req.password)) {
             
             return res.send({ msg: "update suuccess", user: UserUpdated });
           }

@@ -4,7 +4,7 @@ import './App.css';
 import {useEffect} from "react"
 import CardList from './compenent/cardList/cardList';
 import { useDispatch } from 'react-redux';
-import { addProduct, getAllProduct } from './redux/actions';
+import { addProduct, getAllProduct, getProductsbyUser } from './redux/actions';
 import Signup from './compenent/signup/Signup';
 import {Routes,Route} from "react-router-dom"
 import Home from './compenent/Home/Home';
@@ -18,13 +18,16 @@ import EditUser from './compenent/EditUser/EditUser';
 import EditProduct from './compenent/EditProduct/EditProduct'
 import Addproduct from './compenent/Addproduct/Addproduct';
 
+
 function App() {
 
   const dispatch = useDispatch();
 
   useEffect(() => {
+    
   dispatch(getAllProduct())
   dispatch(getCurrent())
+ 
 }, )
 
  return (
@@ -36,8 +39,8 @@ function App() {
   <Route  path='/products' element={<><SideBar/> <Products/></>}/>
   <Route  path='/profile' element={<><SideBar/><Profile/></>}/>
   <Route  path='/profileSettings' element={<><SideBar/><EditUser/></>}/>
-  <Route path='/addproduct' element={<Addproduct/>}  />
-  <Route  path='/editproduct' element={<EditProduct/>} />
+   <Route path='/addproduct' element={<Addproduct/>}  />
+  <Route  path='/editproduct:id' element={<EditProduct/>} />
     </Routes>
   </div>
   );
