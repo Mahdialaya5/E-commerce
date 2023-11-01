@@ -7,7 +7,10 @@ import ProductUser from '../ProductUser/ProductUser';
 
 function Profile() {
   const user = useSelector(state => state.userReducer.User)
-
+  
+  const Products=useSelector(state=>state.productReducer.products)
+  
+  const productsbyuser=Products.map((el)=>el.seller._id==user._id?el:null)
 
 
 
@@ -23,7 +26,7 @@ function Profile() {
  {user.img? <img src={user.img} alt='profile' style={{width:"150px",borderRadius:"20%",position:'relative',bottom:"60px",left:"7px"}}  />:null}
       <h3  className='desc'>profil of {user.role}</h3>
       </div>
-   {user.role=="company" ?<ProductUser/>:null}
+   {user.role=="company" && productsbyuser[0]!=null ?  <ProductUser/>:null}
  <Link  to={'/profileSettings'} > <button   className='btnSttg'  >profile Settings</button></Link>
     </div>
   )

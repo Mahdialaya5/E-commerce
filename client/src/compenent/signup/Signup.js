@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { addUser } from '../../redux/action_user'
+import { useDispatch, useSelector } from 'react-redux'
+import { Navigate, addUser } from '../../redux/action_user'
 import "./signup.css"
 import { Link, useNavigate } from 'react-router-dom'
 import Alert from '../Alert/Alert'
@@ -12,10 +12,18 @@ function Signup() {
     const [newrole, setrole] = useState("")
     const dispatch= useDispatch()
     const navigate=useNavigate()
-const onSubmit=(e)=>{
+  const onSubmit=(e)=>{
         e.preventDefault();
     dispatch(addUser({email:newemail,name:newname,password:newpassword,role:newrole}, navigate))
       }
+
+  const handleSubmit=(e)=>{
+        e.preventDefault();
+      
+      navigate("/login")
+      dispatch(Navigate())
+      }
+      const err = useSelector(state => state.userReducer.errors) 
 return (
    <div  id='backH' >
 <form  id='frsig'  >
@@ -32,9 +40,9 @@ return (
  <option>company</option>
   </select>
   <button onClick={onSubmit} id='b'>register</button>
-  <Alert/>
+  {err ? <Alert/>:null}
     <div className="social">
-      <Link  to={"/login"} >Login</Link>
+      <Link  onClick={(e)=>handleSubmit(e)} >Login</Link>
     </div>
 </form>
    </div>

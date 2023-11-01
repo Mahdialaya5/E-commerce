@@ -19,20 +19,21 @@ function EditUser() {
   }, [user])
   
   const handleclick=()=>{
-  
+  if (newname||setPassword||image){
     const data = new FormData();
      data.append("name",newname)
     data.append("file",image)
     data.append("password",Password)
-    dispatch(editUser(user._id,data,naviagte))
+    dispatch(editUser(user._id,data,naviagte))}
+    return alert("input is empty")
   }
   return (
 
-       <div  className='containerPfrl'>
+       <div  className='EditUser'   >
             <p id='username' ></p>
      <div className='edituser'id='formedit' >
       <div className="form-floating ">
-     <input    type="text" className="form-control inpt " id="floatingInput" placeholder="USERNAME"  onChange={(e)=>setnewname(e.target.value)}   />
+     <input    type="text" className="form-control inpt " id="floatingInput" placeholder={newname}  onChange={(e)=>setnewname(e.target.value)}   />
      <label  style={{color:"aqua"}}  for="floatingInput">NEW USER NAME</label>
      <br/>
    </div>

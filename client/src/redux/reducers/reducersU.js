@@ -1,4 +1,4 @@
-import { ADD_USER_FAIL, ADD_USER_SUCCESS, EDIT, GET_CURRENT_SUCCESS, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT } from "../const_user"
+import { ADD_USER_FAIL, ADD_USER_SUCCESS, EDIT, GET_CURRENT_SUCCESS, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, naviagte } from "../const_user"
 
 
 const initialState= {
@@ -19,7 +19,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
             localStorage.setItem("token", payload.token)
                 return { ...state,User: payload.user }
         case LOGIN_FAIL:
-            return { ...state, errors: payload }
+            return { ...state, errors: payload}
         case GET_CURRENT_SUCCESS:
                 return { ...state,User: payload.user}
         case LOGOUT:
@@ -27,6 +27,8 @@ export const userReducer = (state = initialState, { type, payload }) => {
                  return {errors: null,currentUser: {}}
         case EDIT:
                 return { ...state}
+        case naviagte:
+               return {...state,errors:false}
           default:
              return state
     }}

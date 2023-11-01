@@ -18,7 +18,7 @@ function SideBar() {
       {window.location.pathname=="/products" ?<input  className='InptSrch' />:null}
      {token ? <Link to={'/addproduct'} ><button  className='aprd' >Add product</button></Link>:null }
   {window.location.pathname!="/products"  ? <Link to={'/products'}  ><button  className='prd' >Products</button></Link> :null}
-    {token? <Link to={'/profile'}  ><button  className='profile' >profile</button></Link>:null }
+    {token && window.location.pathname!="/profile" ?  <Link to={'/profile'}  ><button  className='profile' >profile</button></Link>:null }
     {!token ?  <Link to={'/login'}  ><button  className='log' >Login</button></Link>:null }
     {!token ?  <Link to={'/register'}  ><button  className='sig' >Register</button></Link>:null }
    {token ? <button  onClick={() => dispatch(logout(),naviagte("/"))}  className='lgout' >logout</button>:null }

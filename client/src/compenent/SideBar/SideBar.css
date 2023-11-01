@@ -26,7 +26,7 @@
 .prd{
     position: relative;
     top: 90px;
-    left: 30px;
+    left: 10px;
     background-color:rgb(134, 157, 187);
     border: none;
     width: 1em;
@@ -42,9 +42,9 @@
 
 
 .profile{ 
-     position: relative;
-    top: 150px;
-    left: 12px;
+     position: absolute;
+    top: 220px;
+    left: 30px;
     background-color:rgb(134, 157, 187);
     border: none;
     width: 1em;
@@ -69,9 +69,9 @@
     width:20px;
 }
 .lgout{
-    position: relative;
-    top: 380px;
-    left: 2px;
+    position: absolute;
+    top: 480px;
+    left: 20px;
     background-color:rgb(134, 157, 187);
     border: none;
     width:25px;

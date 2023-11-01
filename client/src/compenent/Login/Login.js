@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import "./login.css"
 import { Link, useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { loginUser } from '../../redux/action_user'
+import { useDispatch, useSelector } from 'react-redux'
+import { Navigate, loginUser } from '../../redux/action_user'
 import Alert from '../Alert/Alert'
 
 
@@ -18,7 +18,13 @@ function Login() {
 
     dispatch(loginUser({email:Email,password:Password}, navigate))
   }
- 
+const handleSubmit=(e)=>{
+  e.preventDefault();
+
+navigate("/register")
+dispatch(Navigate())
+}
+const err = useSelector(state => state.userReducer.errors) 
  return (
    <div  id='backH' >
    <div id='login' >
@@ -34,10 +40,10 @@ function Login() {
     <input type="password" onChange={(e)=>setPassword(e.target.value)}   placeholder="Password" id="password" />
     <button id='b' onClick={onSubmit} >Log In</button>
 
-    <Alert/>
+    {err ? <Alert/>:null}
    
     <div className="social">
-      <Link  to={"/register"} >Sign up</Link>
+      <Link onClick={(e)=>handleSubmit(e)}  >Sign up</Link>
     </div>
   </form>
 </div>
