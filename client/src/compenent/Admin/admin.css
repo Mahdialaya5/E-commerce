@@ -1,0 +1,29 @@
+.containerAdm{
+    position: absolute;
+    top: 50px;
+    left: 350px;
+    width: 800px;
+    height: 500px;
+    background-color:rgb(138, 138, 152);
+    border-radius: 2%;
+}
+.titlAdm{
+    position: relative;
+    left: 15em;
+    color: rgb(120, 32, 32);
+}
+.userlist{
+    margin-left: 8px;
+    font-size: x-large;
+    color: brown;
+}
+tr{
+   width: 500px;
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 20px;
+   border: 1px solid black;
+}
+table {
+    border: 1px solid black;
+  }

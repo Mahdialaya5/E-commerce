@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import CardList from "../cardList/cardList";
 import Cards from "../cards/Cards";
 import "./products.css";
 import { useSelector } from "react-redux";
 
 function Products(){
-
 
   const [currentPage, setCurrentPage] = useState(1);
   const  productsPerPage = 6
@@ -33,7 +31,7 @@ console.log(currentProducts);
     <div id="products">
       <div className="slct">
         <div className="sousslct">
-          <input className="chkd" type="checkbox" />
+          <input className="chkd" type="checkbox"  />
           <label> pc </label>
         </div>
         <div className="sousslct">

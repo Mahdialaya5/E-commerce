@@ -46,7 +46,7 @@ return (
       <option  value={"tablette"}  >Tablette</option>
      </select>
    
-     <button id='b' onClick={handleClick}  >ok</button>
+     <button id='b' onClick={handleClick}  >save</button>
      <div className="social">
        <Link  to={"/products"} >return</Link>
      </div>
