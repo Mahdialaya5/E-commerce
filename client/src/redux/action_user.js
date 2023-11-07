@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_USER_FAIL, ADD_USER_SUCCESS, EDIT, EDIT_FAIL, GET_CURRENT_FAIL, GET_CURRENT_SUCCESS, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, SEARCH, naviagte } from "./const_user";
+import { ADD_USER_FAIL, ADD_USER_SUCCESS, EDIT, EDIT_FAIL, GET_ALLUSERS_FAIL, GET_ALLUSERS_SUCCESS, GET_CURRENT_FAIL, GET_CURRENT_SUCCESS, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, naviagte } from "./const_user";
 
 
 export const addUser = (userBody,navigate) => async (dispatch) => {
@@ -73,9 +73,24 @@ export const editUser = (id, userBody, navigate) => async (dispatch) => {
       
     } }
 
-export const searchUser= (searchusr) => {
-      return { type: SEARCH, payload:searchusr }
+export const getAllUsers = () => async (dispatch) => {
+      const token = localStorage.getItem("token");
+    
+   try {
+       const res = await axios.get("http://localhost:5000/api/user/admin",{ headers: { Authorization: `Bearer ${token}` }})
+         dispatch({
+         type: GET_ALLUSERS_SUCCESS,
+         payload: res.data
+       });
      }
+     catch (err) {
+       console.log(err)
+       dispatch({
+         type: GET_ALLUSERS_FAIL,
+         payload: err.message
+       });
+      }}
+
 export const Navigate=()=>{
   return {type:naviagte}
 }

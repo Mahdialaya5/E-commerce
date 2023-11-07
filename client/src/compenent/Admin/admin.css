@@ -17,13 +17,11 @@
     font-size: x-large;
     color: brown;
 }
-tr{
-   width: 500px;
-   display: flex;
-   justify-content: space-between;
-   margin-bottom: 20px;
-   border: 1px solid black;
-}
-table {
-    border: 1px solid black;
+
+table, th, td {
+    border:1px solid black;
   }
+table {
+    width: 100%;
+    overflow-x: auto;
+}

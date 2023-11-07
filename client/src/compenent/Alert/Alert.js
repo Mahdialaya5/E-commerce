@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import "./alert.css"
 function Alert() {
   const err = useSelector(state => state.userReducer.errors)
-
+  console.log(err);
   return(
   < >
     {err&&err.msg?<p id='err'  >{err.msg}</p>:

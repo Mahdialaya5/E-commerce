@@ -5,27 +5,25 @@ import { useDispatch, useSelector } from 'react-redux'
 import { editUser } from '../../redux/action_user'
 
 function EditUser() {
+ 
   const dispatch= useDispatch()
   const naviagte=useNavigate()
   const [newname, setnewname] = useState("")
   const [Password, setPassword] = useState("")
   const [image, setimage] = useState()
   const user = useSelector(state => state.userReducer.User)
-  console.log(user);
-  useEffect(() => {
-    
-  setnewname(user.name)
-   
-  }, [user])
+  
   
   const handleclick=()=>{
   if (newname||setPassword||image){
+   
     const data = new FormData();
      data.append("name",newname)
     data.append("file",image)
     data.append("password",Password)
-    dispatch(editUser(user._id,data,naviagte))}
-    return alert("input is empty")
+    dispatch(editUser(user._id,data,naviagte))
+  }
+   else alert("input is empty")
   }
   return (
 
@@ -33,7 +31,7 @@ function EditUser() {
             <p id='username' ></p>
      <div className='edituser'id='formedit' >
       <div className="form-floating ">
-     <input    type="text" className="form-control inpt " id="floatingInput" placeholder={newname}  onChange={(e)=>setnewname(e.target.value)}   />
+     <input    type="text" className="form-control inpt " id="floatingInput" placeholder='New name'  onChange={(e)=>setnewname(e.target.value)}   />
      <label  style={{color:"aqua"}}  for="floatingInput">NEW USER NAME</label>
      <br/>
    </div>

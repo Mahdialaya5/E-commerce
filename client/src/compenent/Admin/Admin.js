@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './admin.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllUsers } from '../../redux/action_user'
 
 function Admin() {
+  const Users=useSelector(state=>state.userReducer.users)
+  const dispatch=useDispatch()
+ console.log(Users);
+  useEffect(() => {
+    dispatch( getAllUsers())
+  }, [])
+  
   return (
     <div className='containerAdm'  >
      <h2  className='titlAdm' >Admin</h2>
@@ -13,11 +22,12 @@ function Admin() {
         <th>category</th>
         <th>Email</th>
     </tr>
-    <tr className='tr'  >
-        <td>dell</td>
-        <td>company</td>
-        <td>company</td>
-    </tr>
+
+    {Users && Users.map((el)=><tr className='tr'  >
+        <td>{el.name}</td>
+        <td>{el.role}</td>
+        <td>{el.email}</td>
+    </tr>)}
 </tbody>
   </table>
 

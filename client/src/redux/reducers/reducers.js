@@ -9,7 +9,7 @@ import { GET_PRODUCT_LOADING, GET_PRODUCT_SUCCESS,ADD_PRODUCT_SUCCESS,ADD_PRODUC
    }
   
 export const productReducer = (state = initialState, { type, payload }) => {
-  console.log(state.products);
+  
     switch (type) {
         case  GET_PRODUCT_LOADING:
                   return { ...state, loading: true }

@@ -1,4 +1,4 @@
-import { ADD_USER_FAIL, ADD_USER_SUCCESS, EDIT, GET_CURRENT_SUCCESS, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, naviagte } from "../const_user"
+import { ADD_USER_FAIL, ADD_USER_SUCCESS, EDIT, GET_ALLUSERS_SUCCESS, GET_CURRENT_SUCCESS, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, naviagte } from "../const_user"
 
 
 const initialState= {
@@ -27,6 +27,8 @@ export const userReducer = (state = initialState, { type, payload }) => {
                  return {errors: null,currentUser: {}}
         case EDIT:
                 return { ...state}
+        case GET_ALLUSERS_SUCCESS :
+            return {...state,users:payload}
         case naviagte:
                return {...state,errors:false}
           default:

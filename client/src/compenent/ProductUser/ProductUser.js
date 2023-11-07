@@ -5,11 +5,9 @@ import { Link } from 'react-router-dom';
 
 function ProductUser() {
   const user = useSelector(state => state.userReducer.User)
-  console.log(user._id);
   const Products=useSelector(state=>state.productReducer.products)
-  
-  const productsbyuser=Products.map((el)=>el.seller._id==user._id?el:null)
-  ;
+  const productsbyuser=Products.filter((el)=>el.seller._id==user._id)
+  console.log(productsbyuser);
   return (
     <div  className='ProductUser'  >
 <h2>my products</h2>
