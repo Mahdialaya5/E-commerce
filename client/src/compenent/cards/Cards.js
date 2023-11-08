@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Cards({el}) {
-  console.log(el);
+ 
   return (<>
     <div className="card"   style={{width: '18rem',background:" rgb(147, 214, 191)",borderRadius:'2%',backgroundColor: "rgb(148 135 177)"}}>
    <div className="card-body">

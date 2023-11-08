@@ -1,4 +1,4 @@
-import {GET_PRODUCT_LOADING, GET_PRODUCT_SUCCESS, GET_PRODUCT_FAIL, ADD_PRODUCT_SUCCESS,GET_ONEPRODUCT_SUCCESS ,GET_ONEPRODUCT_FAIL, ADD_PRODUCT_FAIL, EDIT_PRODUCT_SUCCESS, EDIT_PRODUCT_FAIL, GET_BY_USER, SEARCHP } from "./const "
+import {GET_PRODUCT_LOADING, GET_PRODUCT_SUCCESS, GET_PRODUCT_FAIL, ADD_PRODUCT_SUCCESS,GET_ONEPRODUCT_SUCCESS ,GET_ONEPRODUCT_FAIL, ADD_PRODUCT_FAIL, EDIT_PRODUCT_SUCCESS, EDIT_PRODUCT_FAIL,  SEARCHPRDT, SEARCHPC, SEARCHPHONE, SEARCHTABETTE } from "./const "
 import axios from "axios"
 
 export const getAllProduct = () => async (dispatch) => {
@@ -31,8 +31,18 @@ navigate('/products')
       }}
 
 export const searchProduct= (searchPRDT) => {
-        return { type: SEARCHP, payload:searchPRDT }
+        return { type: SEARCHPRDT, payload:searchPRDT }
        }
+
+export const searchPc=()=>{
+  return  {type:SEARCHPC}
+}
+export const searchPhone=()=>{
+  return {type:SEARCHPHONE}
+}
+export const searchTablette=()=>{
+  return {type:SEARCHTABETTE}
+}
 
 export const getOneProduct= (id) => async (dispatch) => {
         const token=localStorage.getItem('token');

@@ -1,7 +1,8 @@
-import { GET_PRODUCT_LOADING, GET_PRODUCT_SUCCESS,ADD_PRODUCT_SUCCESS,ADD_PRODUCT_FAIL, GET_PRODUCT_FAIL, GET_ONEPRODUCT_SUCCESS, GET_ONEPRODUCT_FAIL, EDIT_PRODUCT_SUCCESS, GET_BY_USER} from "../const "
+import { GET_PRODUCT_LOADING, GET_PRODUCT_SUCCESS,ADD_PRODUCT_SUCCESS,ADD_PRODUCT_FAIL,
+   GET_PRODUCT_FAIL, GET_ONEPRODUCT_SUCCESS, GET_ONEPRODUCT_FAIL,
+    EDIT_PRODUCT_SUCCESS,  SEARCHPRDT, SEARCHPC, SEARCHPHONE, SEARCHTABETTE} from "../const "
 
-
-  const initialState = {
+const initialState = {
     products: [],
     oneProduct:{},
     errors: null,
@@ -9,7 +10,6 @@ import { GET_PRODUCT_LOADING, GET_PRODUCT_SUCCESS,ADD_PRODUCT_SUCCESS,ADD_PRODUC
    }
   
 export const productReducer = (state = initialState, { type, payload }) => {
-  
     switch (type) {
         case  GET_PRODUCT_LOADING:
                   return { ...state, loading: true }
@@ -27,8 +27,15 @@ export const productReducer = (state = initialState, { type, payload }) => {
                     return { ...state, errors: payload }
         case EDIT_PRODUCT_SUCCESS:
                     return { ...state, products: state.products.map(el => el._id == payload._id ? payload : el) }
-      
-                    default:
+        case SEARCHPRDT :
+                return {...state,products:state.products.filter(el=>el.name.toLowerCase().includes(payload.trim().toLowerCase()))} 
+        case SEARCHPC:
+          return  {...state,products:state.products.filter(el=>el.category=='pc')}
+        case SEARCHPHONE :
+          return  {...state,products:state.products.filter(el=>el.category=='smartphone')}
+        case SEARCHTABETTE :
+          return {...state,products:state.products.filter(el=>el.category=='tablette')}
+                default:
             return state
     }
 }
