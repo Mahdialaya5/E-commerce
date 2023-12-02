@@ -9,7 +9,7 @@ function Signup() {
     const [newemail, setemail] = useState("")
     const [newname, setname] = useState("")
     const [newpassword, setpassword] = useState("")
-    const [newrole, setrole] = useState("")
+    const [newrole, setrole] = useState("user")
     const dispatch= useDispatch()
     const navigate=useNavigate()
   const onSubmit=(e)=>{

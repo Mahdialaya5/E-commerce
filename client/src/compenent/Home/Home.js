@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom'
 
 
 function Home() {
+    const token=localStorage.getItem("token")
+
   return (
     <div  id='backH' >
         <nav  id='nav' > 
             <Link to={"products"} ><button className='n' >Products</button></Link>
-            <Link  to={"register"}  ><button className='n' >sign up</button></Link>
-            <Link to={"/login"} ><button className='n' >login</button></Link>
+         { !token ?  <Link  to={"register"}  ><button className='n' >sign up</button></Link>:null}
+          {!token ?  <Link to={"/login"} ><button className='n' >login</button></Link>:null}
         </nav>
         <div id='flxh' >
         <h1 id='hh'>Computer And Laptop</h1>

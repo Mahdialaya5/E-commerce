@@ -86,7 +86,7 @@ export const getAllUsers = () => async (dispatch) => {
      catch (err) {
        console.log(err)
        dispatch({
-         type: GET_ALLUSERS_FAIL,
+         type: GET_ALLUSERS_FAIL, 
          payload: err.message
        });
       }}

@@ -15,7 +15,7 @@ function Admin() {
     <div className='containerAdm'  >
      <h2  className='titlAdm' >Admin</h2>
    < p  className='userlist'  > userlist</p>
-  <table>
+  <table    >
 <tbody>
     <tr   className='tr' >
         <th>name</th>

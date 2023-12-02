@@ -1,5 +1,5 @@
 import { GET_PRODUCT_LOADING, GET_PRODUCT_SUCCESS,ADD_PRODUCT_SUCCESS,ADD_PRODUCT_FAIL,
-   GET_PRODUCT_FAIL, GET_ONEPRODUCT_SUCCESS, GET_ONEPRODUCT_FAIL,
+   GET_PRODUCT_FAIL,GET_ONEPRODUCT_SUCCESS, GET_ONEPRODUCT_FAIL,
     EDIT_PRODUCT_SUCCESS,  SEARCHPRDT, SEARCHPC, SEARCHPHONE, SEARCHTABETTE} from "../const "
 
 const initialState = {
@@ -26,15 +26,15 @@ export const productReducer = (state = initialState, { type, payload }) => {
         case GET_ONEPRODUCT_FAIL:
                     return { ...state, errors: payload }
         case EDIT_PRODUCT_SUCCESS:
-                    return { ...state, products: state.products.map(el => el._id == payload._id ? payload : el) }
+                    return { ...state }
         case SEARCHPRDT :
                 return {...state,products:state.products.filter(el=>el.name.toLowerCase().includes(payload.trim().toLowerCase()))} 
         case SEARCHPC:
-          return  {...state,products:state.products.filter(el=>el.category=='pc')}
+          return  {...state,products:state.products.filter(el=>el.category==='pc')}
         case SEARCHPHONE :
-          return  {...state,products:state.products.filter(el=>el.category=='smartphone')}
+          return  {...state,products:state.products.filter(el=>el.category==='smartphone')}
         case SEARCHTABETTE :
-          return {...state,products:state.products.filter(el=>el.category=='tablette')}
+          return {...state,products:state.products.filter(el=>el.category==='tablette')}
                 default:
             return state
     }

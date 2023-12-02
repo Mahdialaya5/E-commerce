@@ -56,27 +56,38 @@ router.get("/current", isAuth(), (req, res) => {
 })
 //edituser
 router.put("/:id",upload("user").single("file"),isAuth(), async (req, res) => {
-    const { password,name} = req.body
-    try {
-        const existName = await User.findOne({ name })
-           if (existName &&existName._id==!req.params.id) {
-            return res.status(400).send({ msg:"name exist,please change user name"})
-        }
-      if(req.body.password){
-            const hashedPassword = await bcrypt.hash(password, 10)
-             req.body.password=hashedPassword
-           }
+   
+    const {email,newpassword,password} = req.body
+ try {
+      
+     if(newpassword && password)
+     {
+        // validator current password
+        const existUser = await User.findOne({ email})
+        console.log(existUser);
+        const isMatched = await bcrypt.compare(password, existUser.password)
+      
+        if(isMatched){
+        // bcrypt new password 
+                const hashednewpassword = await bcrypt.hash(newpassword, 10)
+                  req.body.password=hashednewpassword
+                   }
+           else {
+                    return res.status(400).send({ msg: "Current password not matched!" })
+                     }}
            const result = await User.updateOne({ _id: req.params.id }, { ...req.body })
            const UserUpdated = await  User.findOne({ _id: req.params.id })
-      if(req.file)
+          UserUpdated.newpassword=undefined
+     // change photo 
+    if(req.file)
              { const url = `${req.protocol}://${req.get("host")}/${req.file.path}`
              UserUpdated.img =url
               await UserUpdated.save()
                 }
-             console.log((result.modifiedCount) || (req.file));
+      
          if ((result.modifiedCount) || (req.file)||(req.password)) {
             
-            return res.send({ msg: "update suuccess", user: UserUpdated });
+            return res.send({ msg: "update success", user: UserUpdated });
           }
         return res.status(400).send({ msg: " aleardy update " })
     }

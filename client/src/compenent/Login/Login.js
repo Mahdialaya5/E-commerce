@@ -15,14 +15,12 @@ function Login() {
 
  const onSubmit=(e)=>{
     e.preventDefault();
-
-    dispatch(loginUser({email:Email,password:Password}, navigate))
+     dispatch(loginUser({email:Email,password:Password}, navigate))
   }
 const handleSubmit=(e)=>{
-  e.preventDefault();
-
-navigate("/register")
-dispatch(Navigate())
+    e.preventDefault();
+    navigate("/register")
+    dispatch(Navigate())
 }
 const err = useSelector(state => state.userReducer.errors) 
  return (

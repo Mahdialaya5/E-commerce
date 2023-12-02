@@ -46,7 +46,7 @@ router.get("/:id",isAuth(), async (req, res) => {
 }})
 
 //edit product
-router.put("/:id",upload("products").single("file"),isAuth(), async (req, res) => {
+router.put("/:id",upload("products").single("file"), async (req, res) => {
     try {
          const result = await Product.updateOne({ _id: req.params.id }, { ...req.body })
             productUpdated = await  Product.findOne({ _id: req.params.id })

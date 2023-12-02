@@ -1,15 +1,18 @@
 .containerAdm{
     position: absolute;
     top: 50px;
+    width: 100px;
     left: 350px;
     width: 800px;
     height: 500px;
     background-color:rgb(138, 138, 152);
     border-radius: 2%;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 .titlAdm{
     position: relative;
-    left: 15em;
+  left:12em ;
     color: rgb(120, 32, 32);
 }
 .userlist{
@@ -22,6 +25,9 @@ table, th, td {
     border:1px solid black;
   }
 table {
+position: relative;
+bottom: 20px;
+ height: 550px;
     width: 100%;
-    overflow-x: auto;
+
 }

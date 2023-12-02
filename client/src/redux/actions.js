@@ -53,7 +53,7 @@ export const getOneProduct= (id) => async (dispatch) => {
 const res = await axios.get(`http://localhost:5000/api/product/${id}`,{ headers: { Authorization: `Bearer ${token}` }})
       dispatch({
             type: GET_ONEPRODUCT_SUCCESS,
-            payload: res.data.Product
+            payload: res.data.product
           });
         }
         catch (err) {
@@ -73,7 +73,7 @@ export const editProduct = (id, productBody, navigate) => async (dispatch) => {
               type: EDIT_PRODUCT_SUCCESS,
               payload: resProduct.data.Product
             })
-             navigate('/')
+             navigate('/profile')
           }
           catch (err) {
             console.log(err)

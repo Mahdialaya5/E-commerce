@@ -38,7 +38,7 @@ function App() {
   <Route  path='/profile' element={<><SideBar/><Profile/></>}/>
   <Route  path='/profileSettings' element={<><SideBar/><EditUser/></>}/>
   <Route  path='/addproduct' element={<Addproduct/>}  />
-  <Route  path='/editproduct:id' element={<EditProduct/>} />
+  <Route  path={'/editproduct/:id'} element={<EditProduct/>} />
   <Route  path='/admin' element={<><SideBar/><Admin/></>} />
     </Routes>
   </div>

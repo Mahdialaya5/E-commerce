@@ -1,4 +1,5 @@
 .EditUser{
+    display: flex;
     position: absolute;
     top: 29px;
     left: 350px;
@@ -7,8 +8,15 @@
     background-color:rgb(90, 90, 186);
     border-radius: 2%;
 }
+#save{
+    position: relative;
+    top: 100px;
+}
 
-
+.edit_password{
+    position: relative;
+    right: 150px;
+}
 .inpt{
     width: 350px;
     background-color: gray;
