@@ -6,6 +6,7 @@ import { getAllProduct, searchPc, searchPhone, searchTablette } from "../../redu
 
 function Products(){
 
+  const [show_reset, setshow_reset] = useState(false)
   const [currentPage, setCurrentPage] = useState(1);
   const  productsPerPage = 6
   const products=useSelector(state=> state.productReducer.products)
@@ -35,18 +36,18 @@ console.log(products);
     <div id="products">
       <div className="slct">
         <div className="sousslct">
-          <input className="chkd" type="checkbox"  onClick={(e)=>disptach(searchPc())} />
+          <input className="chkd" type="checkbox"  onClick={(e)=>disptach(searchPc(),setshow_reset(true))} />
           <label style={{color:"#2470bc"}}   > pc </label>
         </div>
         <div className="sousslct">
-          <input className="chkd" type="checkbox"  onClick={(e)=>disptach(searchTablette())}   />
+          <input className="chkd" type="checkbox"  onClick={(e)=>disptach(searchTablette(),setshow_reset(true))}   />
           <label style={{color:"#2470bc"}}   >Tablette</label>
         </div>
         <div className="sousslct">
-          <input className="chkd" type="checkbox"   onClick={(e)=>disptach(searchPhone())}  />
+          <input className="chkd" type="checkbox"   onClick={(e)=>disptach(searchPhone(),setshow_reset(true))}  />
           <label style={{color:"#2470bc"}}   >Smartphone</label>
         </div>
-        <button  className="btn_reset" onClick={()=>disptach(getAllProduct())} >reset</button>
+   { show_reset ?     <button  className="btn_reset" onClick={()=>disptach(getAllProduct())} >reset</button>:null}
       </div>
    
       <hr />
