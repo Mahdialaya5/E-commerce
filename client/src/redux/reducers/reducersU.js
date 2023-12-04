@@ -17,7 +17,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
             return { ...state, errors: payload }
         case LOGIN_SUCCESS:
             localStorage.setItem("token", payload.token)
-                return { ...state,User: payload.user,errors:null }
+                return { ...state,User: payload.user,errors:{} }
         case LOGIN_FAIL:
             return { ...state, errors: payload}
         case GET_CURRENT_SUCCESS:

@@ -13,13 +13,13 @@ function Admin() {
   
   return (
     <div className='containerAdm'  >
-     <h2  className='titlAdm' >Admin</h2>
-   < p  className='userlist'  > userlist</p>
+     <h2  className='titlAdm' >userlist</h2>
+
   <table    >
 <tbody>
     <tr   className='tr' >
         <th>name</th>
-        <th>category</th>
+        <th>role</th>
         <th>Email</th>
     </tr>
 

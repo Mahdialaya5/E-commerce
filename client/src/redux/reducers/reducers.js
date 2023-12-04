@@ -1,6 +1,6 @@
 import { GET_PRODUCT_LOADING, GET_PRODUCT_SUCCESS,ADD_PRODUCT_SUCCESS,ADD_PRODUCT_FAIL,
    GET_PRODUCT_FAIL,GET_ONEPRODUCT_SUCCESS, GET_ONEPRODUCT_FAIL,
-    EDIT_PRODUCT_SUCCESS,  SEARCHPRDT, SEARCHPC, SEARCHPHONE, SEARCHTABETTE} from "../const "
+    EDIT_PRODUCT_SUCCESS,  SEARCHPRDT, SEARCHPC, SEARCHPHONE, SEARCHTABETTE, DELETE_ONEPRODUCT_SUCCESS} from "../const "
 
 const initialState = {
     products: [],
@@ -35,6 +35,8 @@ export const productReducer = (state = initialState, { type, payload }) => {
           return  {...state,products:state.products.filter(el=>el.category==='smartphone')}
         case SEARCHTABETTE :
           return {...state,products:state.products.filter(el=>el.category==='tablette')}
+        case DELETE_ONEPRODUCT_SUCCESS :
+          return {...state}
                 default:
             return state
     }

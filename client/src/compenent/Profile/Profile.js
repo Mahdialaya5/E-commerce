@@ -19,7 +19,7 @@ function Profile() {
   }, [])
   
  
-
+console.log(productsbyuser);
   return (
     <div>
        <div  className='containerPfrl'>

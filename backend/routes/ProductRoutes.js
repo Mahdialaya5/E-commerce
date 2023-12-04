@@ -3,9 +3,10 @@ const router=express.Router()
 const Product=require("../models/Product")
 const upload=require('../utils/multer')
 const isAuth = require('../middlewares/isAuth')
+const isCompany=require('../middlewares/isCompany')
 
-//add new product
-router.post("/", upload("products").single("file"),async (req, res) => {
+//add new product => private for company
+router.post("/", upload("products").single("file"),isAuth(),isCompany,async (req, res) => {
     try {
    console.log(req.file);
        const url = `${req.protocol}://${req.get("host")}/${req.file.path}`
@@ -34,8 +35,8 @@ res.status(400).send(error.message)
     }
 })
 
-//get one product
-router.get("/:id",isAuth(), async (req, res) => {
+//get one product => private for company
+router.get("/:id",isAuth(),isCompany, async (req, res) => {
     try {
      const oneproduct = await Product.findById(req.params.id).populate("seller")
         res.send({product:oneproduct})
@@ -45,8 +46,8 @@ router.get("/:id",isAuth(), async (req, res) => {
         res.status(400).send(error.message)
 }})
 
-//edit product
-router.put("/:id",upload("products").single("file"), async (req, res) => {
+//edit product => private for company
+router.put("/:id",upload("products").single("file"),isAuth(),isCompany, async (req, res) => {
     try {
          const result = await Product.updateOne({ _id: req.params.id }, { ...req.body })
             productUpdated = await  Product.findOne({ _id: req.params.id })
@@ -65,5 +66,18 @@ router.put("/:id",upload("products").single("file"), async (req, res) => {
         res.status(400).send(error.message)
     }
 })
+
+//delete product => private for company
+router.delete("/:id", isAuth(),isCompany,async (req, res) => {
+    try {
+
+        const result = await Product.deleteOne({ _id: req.params.id })
+        if (result.deletedCount) {
+            return res.send({ msg: "delete  success" })
+        } res.status(400).send({ msg: "aleardy delete" })
+    } catch (error) {
+        console.log(error)
+       res.status(400).send(error.message)
+}})
 
 module.exports=router

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Cards from "../cards/Cards";
 import "./products.css";
 import { useDispatch, useSelector } from "react-redux";
-import { searchPc, searchPhone, searchTablette } from "../../redux/actions";
+import { getAllProduct, searchPc, searchPhone, searchTablette } from "../../redux/actions";
 
 function Products(){
 
@@ -36,17 +36,19 @@ console.log(products);
       <div className="slct">
         <div className="sousslct">
           <input className="chkd" type="checkbox"  onClick={(e)=>disptach(searchPc())} />
-          <label> pc </label>
+          <label style={{color:"#2470bc"}}   > pc </label>
         </div>
         <div className="sousslct">
           <input className="chkd" type="checkbox"  onClick={(e)=>disptach(searchTablette())}   />
-          <label>Tablette</label>
+          <label style={{color:"#2470bc"}}   >Tablette</label>
         </div>
         <div className="sousslct">
           <input className="chkd" type="checkbox"   onClick={(e)=>disptach(searchPhone())}  />
-          <label>Smartphone</label>
+          <label style={{color:"#2470bc"}}   >Smartphone</label>
         </div>
+        <button  className="btn_reset" onClick={()=>disptach(getAllProduct())} >reset</button>
       </div>
+   
       <hr />
    {  <div className="cards">
         {currentProducts.map((el) =>   <Cards el={el} />)}

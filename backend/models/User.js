@@ -4,7 +4,7 @@ const userSchema = new mongoose.Schema({
    name:{type:String,required:true},
    password : { type:String},
    newpassword : { type:String},
- img:{type:String},
+   img:{type:String},
    role:{type:String,enum:["guest","company","user","admin"]},
     })
 const User = mongoose.model("user", userSchema)

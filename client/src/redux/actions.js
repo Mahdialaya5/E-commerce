@@ -1,4 +1,4 @@
-import {GET_PRODUCT_LOADING, GET_PRODUCT_SUCCESS, GET_PRODUCT_FAIL, ADD_PRODUCT_SUCCESS,GET_ONEPRODUCT_SUCCESS ,GET_ONEPRODUCT_FAIL, ADD_PRODUCT_FAIL, EDIT_PRODUCT_SUCCESS, EDIT_PRODUCT_FAIL,  SEARCHPRDT, SEARCHPC, SEARCHPHONE, SEARCHTABETTE } from "./const "
+import {GET_PRODUCT_LOADING, GET_PRODUCT_SUCCESS, GET_PRODUCT_FAIL, ADD_PRODUCT_SUCCESS,GET_ONEPRODUCT_SUCCESS ,GET_ONEPRODUCT_FAIL, ADD_PRODUCT_FAIL, EDIT_PRODUCT_SUCCESS, EDIT_PRODUCT_FAIL,  SEARCHPRDT, SEARCHPC, SEARCHPHONE, SEARCHTABETTE, DELETE_ONEPRODUCT_SUCCESS, DELETE_ONEPRODUCT_FAIL } from "./const "
 import axios from "axios"
 
 export const getAllProduct = () => async (dispatch) => {
@@ -12,13 +12,14 @@ export const getAllProduct = () => async (dispatch) => {
         console.log(error)
     }}
 export const addProduct=(productBody,navigate)=>async(dispatch)=>{
+  const token=localStorage.getItem('token');
       try{
-        const resProduct = await axios.post('http://localhost:5000/api/product/',productBody)
+        const resProduct = await axios.post('http://localhost:5000/api/product/',productBody,{ headers: { Authorization: `Bearer ${token}` }})
         dispatch({
           type:ADD_PRODUCT_SUCCESS,
           payload: resProduct.data
         })
-      
+        dispatch(getAllProduct())
 navigate('/products')
     }
 
@@ -73,6 +74,7 @@ export const editProduct = (id, productBody, navigate) => async (dispatch) => {
               type: EDIT_PRODUCT_SUCCESS,
               payload: resProduct.data.Product
             })
+            dispatch(getAllProduct())
              navigate('/profile')
           }
           catch (err) {
@@ -82,4 +84,18 @@ export const editProduct = (id, productBody, navigate) => async (dispatch) => {
               payload: err.message
             });
         }}
-    
+
+ export const deleteProduct = (id) => async (dispatch) => {
+          const token=localStorage.getItem('token');
+          try {
+            await axios.delete(`http://localhost:5000/api/product/${id}`,{ headers: { Authorization: `Bearer ${token}` }})
+            dispatch({
+              type:DELETE_ONEPRODUCT_SUCCESS,
+            })
+            dispatch(getAllProduct())
+          } catch (error) {
+            console.log(error);
+            dispatch({
+              type:DELETE_ONEPRODUCT_FAIL
+            })
+          }}

@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken")
 const { registerCheck, loginCheck, validator } = require('../middlewares/Validator')
 const isAuth = require('../middlewares/isAuth')
 const upload=require('../utils/multer')
+const isAdmin=require("../middlewares/isAdmin")
 //register
 router.post("/register", registerCheck(), validator, async (req, res) => {
     const { email, password, role } = req.body
@@ -54,7 +55,7 @@ router.post('/login', loginCheck(), validator, async (req, res) => {
 router.get("/current", isAuth(), (req, res) => {
     res.send({ user: req.user });
 })
-//edituser
+//edituser => private
 router.put("/:id",upload("user").single("file"),isAuth(), async (req, res) => {
    
     const {email,newpassword,password} = req.body
@@ -96,8 +97,8 @@ router.put("/:id",upload("user").single("file"),isAuth(), async (req, res) => {
         res.status(400).send(error.message)
     }
 })
-//Admin 
-router.get("/admin" ,async (req,res) => {
+//userlist=>private for admin 
+router.get("/admin" ,isAuth(),isAdmin,async (req,res) => {
     try {
             const users = await User.find().sort({name:1})
             res.send( users )
