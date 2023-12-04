@@ -1,5 +1,5 @@
 const isCompany = (req, res, next) => {
-    if (req.user.role == "company") {
+    if (req.user.role == "admin") {
         next()
         return;
     }
