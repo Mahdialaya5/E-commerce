@@ -9,7 +9,7 @@ function Home() {
   return (
     <div  id='backH' >
         <nav  id='nav' > 
-            <Link to={"products"} ><button className='n' >Products</button></Link>
+          {token ?  <Link to={"products"} ><button className='n' >Products</button></Link>:null}
          { !token ?  <Link  to={"register"}  ><button className='n' >sign up</button></Link>:null}
           {!token ?  <Link to={"/login"} ><button className='n' >login</button></Link>:null}
         </nav>

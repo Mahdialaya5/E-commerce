@@ -17,6 +17,7 @@ import Settings from './compenent/Settings/Settings';
 import CompanyRoute from './compenent/Routes/CompanyRoute';
 import AdminRoute from './compenent/Routes/AdminRoute';
 import DashboardAdmin from './compenent/DashboardAdmin/DashboardAdmin';
+import PrivateHome from './compenent/PrivateHome/PrivateHome';
 
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
   <Route  path='/' element={<Home />}/>
   <Route  path='/login' element={<Login/>}/>
   <Route  path='/register' element={<Signup/>}/>
-  <Route  path='/products' element={<><SideBar/><Products/></>}/>
+  <Route  path='/products' element={<PrivateRoute><PrivateHome/></PrivateRoute>}/>
   <Route  path='/profile' element={<PrivateRoute><Dashboard/></PrivateRoute>}/>
   <Route  path='/profileSettings' element={<PrivateRoute><Settings/></PrivateRoute>}/>
   <Route  path='/addproduct' element={<CompanyRoute><Addproduct/></CompanyRoute>}  />
