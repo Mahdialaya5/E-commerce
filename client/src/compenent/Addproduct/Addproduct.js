@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom'
-import { addProduct } from '../../redux/actions';
+import { addProduct } from '../../redux/Actions/actionsProduct';
 
 function Addproduct() {
   const user = useSelector(state => state.userReducer.User)

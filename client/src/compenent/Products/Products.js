@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Cards from "../cards/Cards";
 import "./products.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProduct, searchPc, searchPhone, searchTablette } from "../../redux/actions";
+import { getAllProduct, searchPc, searchPhone, searchTablette } from "../../redux/Actions/actionsProduct";
 
 function Products(){
 

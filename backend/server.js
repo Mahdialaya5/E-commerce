@@ -1,8 +1,8 @@
 const express = require('express')
 const connectdb = require('./config/connect')
 const app = express()
-const port = 5000
-require("dotenv").config({path:"./config/.env"})
+require("dotenv").config()
+const port = process.env.PORT
 connectdb()
 const cors = require("cors");
 
@@ -20,5 +20,8 @@ app.use(express.json())
 app.use("/api/product", require("./routes/ProductRoutes"))
 app.use("/api/user", require("./routes/UserRoutes"))
 
+app.use((req,res) => {
+   res.status(404).send( 'Not found' );
+ });
 
 app.listen(port, (err) => err ? console.log(err) : console.log(`app listening on port ${port}!`))

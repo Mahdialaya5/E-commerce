@@ -22,7 +22,7 @@ router.post("/", upload("products").single("file"),isAuth(),isCompany,async (req
 )
 
 //get all products
-router.get("/", async (req, res) => {
+router.get("/",isAuth(), async (req, res) => {
     try{
 
         const products= await Product.find().populate("seller")

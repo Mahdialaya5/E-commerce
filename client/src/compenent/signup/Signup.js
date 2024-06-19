@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Navigate, addUser } from '../../redux/action_user'
+import { Navigate, addUser } from '../../redux/Actions/actionUser'
 import "./signup.css"
 import { Link, useNavigate } from 'react-router-dom'
 import Alert from '../Alert/Alert'

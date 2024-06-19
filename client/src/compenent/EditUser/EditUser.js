@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './Edituser.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { editUser } from '../../redux/action_user'
+import { editUser } from '../../redux/Actions/actionUser'
 
 function EditUser() {
  

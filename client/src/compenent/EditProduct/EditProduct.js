@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { editProduct, getOneProduct } from '../../redux/actions';
+import { editProduct, getOneProduct } from '../../redux/Actions/actionsProduct';
 import { useDispatch, useSelector } from 'react-redux';
 import './EditProduct.css'
 

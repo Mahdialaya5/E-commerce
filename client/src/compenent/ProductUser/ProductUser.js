@@ -2,7 +2,7 @@ import React from 'react'
 import "./ProductUser.css"
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
-import { deleteProduct } from '../../redux/actions';
+import { deleteProduct } from '../../redux/Actions/actionsProduct';
 
 function ProductUser() {
   const user = useSelector(state => state.userReducer.User)

@@ -1,14 +1,12 @@
 import './App.css'
 import {useEffect} from "react"
 import { useDispatch } from 'react-redux';
-import {  getAllProduct } from './redux/actions';
+import {  getAllProduct } from './redux/Actions/actionsProduct';
 import Signup from './compenent/signup/Signup';
 import {Routes,Route} from "react-router-dom"
 import Home from './compenent/Home/Home';
 import Login from './compenent/Login/Login';
-import Products from './compenent/Products/Products';
-import SideBar from './compenent/SideBar/SideBar';
-import { getCurrent } from './redux/action_user';
+import { getCurrent } from './redux/Actions/actionUser';
 import EditProduct from './compenent/EditProduct/EditProduct'
 import Addproduct from './compenent/Addproduct/Addproduct';
 import Dashboard from './compenent/Dashboard/Dashboard';

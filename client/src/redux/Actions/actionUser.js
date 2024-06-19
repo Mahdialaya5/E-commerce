@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_USER_FAIL, ADD_USER_SUCCESS, EDIT, EDIT_FAIL, GET_ALLUSERS_FAIL, GET_ALLUSERS_SUCCESS, GET_CURRENT_FAIL, GET_CURRENT_SUCCESS, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, naviagte } from "./const_user";
+import { ADD_USER_FAIL, ADD_USER_SUCCESS, EDIT, EDIT_FAIL, GET_ALLUSERS_FAIL, GET_ALLUSERS_SUCCESS, GET_CURRENT_FAIL, GET_CURRENT_SUCCESS, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, naviagte } from "../Const/constUser";
 
 
 export const addUser = (userBody,navigate) => async (dispatch) => {

@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import "./SideBar.css"
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { logout } from '../../redux/action_user'
-import { searchProduct } from '../../redux/actions'
+import { logout } from '../../redux/Actions/actionUser'
+import { searchProduct } from '../../redux/Actions/actionsProduct'
 
 
 function SideBar() {
