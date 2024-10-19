@@ -4,7 +4,8 @@ import axios from "axios"
 export const getAllProduct = () => async (dispatch) => {
     dispatch({ type:GET_PRODUCT_LOADING })
     try {
-      const response = await axios.get("http://localhost:5000/api/product/")
+      const token=localStorage.getItem('token');
+      const response = await axios.get("http://localhost:5000/api/product/",{ headers: { Authorization: `Bearer ${token}` }})
         dispatch({ type: GET_PRODUCT_SUCCESS, payload: response.data })
        
     } catch (error) {
