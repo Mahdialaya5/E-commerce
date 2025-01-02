@@ -1,6 +1,6 @@
 import React from 'react'
-import SideBar from '../SideBar/SideBar'
-import Products from '../Products/Products'
+import SideBar from '../../compenents/SideBar/SideBar'
+import Products from '../../compenents/Products/Products'
 
 function PrivateHome() {
   return (

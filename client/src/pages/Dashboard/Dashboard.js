@@ -1,6 +1,6 @@
 import React from 'react'
-import SideBar from '../SideBar/SideBar'
-import Profile from '../Profile/Profile'
+import SideBar from '../../compenents/SideBar/SideBar'
+import Profile from '../../compenents/Profile/Profile'
 
 function Dashboard() {
   return (

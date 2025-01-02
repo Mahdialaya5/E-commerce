@@ -1,6 +1,6 @@
 import React from 'react'
-import SideBar from '../SideBar/SideBar'
-import EditUser from '../EditUser/EditUser'
+import SideBar from '../../compenents/SideBar/SideBar'
+import EditUser from '../../compenents/EditUser/EditUser'
 
 function Settings() {
   return (

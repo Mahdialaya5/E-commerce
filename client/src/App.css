@@ -1,1 +1,45 @@
+.backH {
+    width: 100%;
+    height: 655px;
+    background-color: rgb(90, 90, 186);
+  }
+  
+  form *{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
 
+input{
+    display: block;
+    height: 50px;
+    width: 30vw;
+    background-color: rgba(79, 76, 76, 0.958);
+    border-radius: 13px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+select{ display: block;
+    height: 50px;
+    width: 31vw;
+    background-color: rgba(79, 76, 76, 0.958);
+    border-radius: 13px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 1.2rem;
+    font-weight: 300;}
+option{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(57, 54, 54, 0.958);
+    border-radius: 23px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 1.2rem;
+    font-weight: 300;
+  }

@@ -1,6 +1,6 @@
 import React from 'react'
-import SideBar from '../SideBar/SideBar'
-import Admin from '../Admin/Admin'
+import SideBar from '../../compenents/SideBar/SideBar'
+import Admin from '../../compenents/Admin/Admin'
 
 
 function DashboardAdmin() {

@@ -1,0 +1,47 @@
+#backH {
+  width: 100%;
+  height: auto;
+  background-color: rgb(90, 90, 186);
+}
+body {
+  margin: 0;
+}
+.logo_home {
+  width: 50%;
+  height: 490px;
+}
+#flxh {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+#nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+.n {
+    margin-top: 5px;
+  font-size: 1.2rem;
+background-color: transparent;
+cursor: pointer;
+  border: hidden;
+  color: #fff;
+}
+
+#hh {
+  color: #fff;
+  font-size: 42px;
+  line-height: 50px;
+  font-weight: 400;
+  font-style: italic;
+}
+@media (max-width: 600px) {
+  .logo_home {
+    width: 90%;
+  }
+  #hh {
+    font-size: 1.8rem;
+  }
+}
