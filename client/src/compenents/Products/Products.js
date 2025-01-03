@@ -2,22 +2,27 @@ import React, { useState } from "react";
 import Cards from "../cards/Cards";
 import "./products.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProduct, searchPc, searchPhone, searchTablette } from "../../redux/Actions/actionsProduct";
+import {
+  getAllProduct,
+  searchPc,
+  searchPhone,
+  searchTablette,
+} from "../../redux/Actions/actionsProduct";
 
-function Products(){
-
-  const [show_reset, setshow_reset] = useState(false)
+function Products() {
+  const [show_reset, setshow_reset] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const  productsPerPage = 6
-  const products=useSelector(state=> state.productReducer.products)
-  console.log(products);
-  // Calculate pagination
+  const productsPerPage = 6;
+  const products = useSelector((state) => state.productReducer.products);
+
   const totalPages = Math.ceil(products.length / productsPerPage);
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(indexOfFirstProduct,indexOfLastProduct);
-console.log(products);
-  // Handle pagination actions
+  const currentProducts = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+
   const handleNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
   };
@@ -29,38 +34,61 @@ console.log(products);
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
- 
-  const disptach=useDispatch()
- 
+
+  const disptach = useDispatch();
+
   return (
     <div id="products">
       <div className="slct">
         <div className="sousslct">
-          <input className="chkd" type="checkbox"  onClick={(e)=>disptach(searchPc(),setshow_reset(true))} />
-          <label style={{color:"#2470bc"}}   > pc </label>
+          <input
+            className="chkd"
+            type="checkbox"
+            onClick={(e) => disptach(searchPc(), setshow_reset(true))}
+          />
+          <label  className="label_sr"   style={{ color: "#2470bc" }}> pc </label>
         </div>
         <div className="sousslct">
-          <input className="chkd" type="checkbox"  onClick={(e)=>disptach(searchTablette(),setshow_reset(true))}   />
-          <label style={{color:"#2470bc"}}   >Tablette</label>
+          <input
+            className="chkd"
+            type="checkbox"
+            onClick={(e) => disptach(searchTablette(), setshow_reset(true))}
+          />
+          <label  className="label_sr"      style={{ color: "#2470bc" }}>Tablette</label>
         </div>
         <div className="sousslct">
-          <input className="chkd" type="checkbox"   onClick={(e)=>disptach(searchPhone(),setshow_reset(true))}  />
-          <label style={{color:"#2470bc"}}   >Smartphone</label>
+          <input
+            className="chkd"
+            type="checkbox"
+            onClick={(e) => disptach(searchPhone(), setshow_reset(true))}
+          />
+          <label  className="label_sr" style={{ color: "#2470bc" }}>Smartphone</label>
         </div>
-   { show_reset ?     <button  className="btn_reset" onClick={()=>disptach(getAllProduct())} >reset</button>:null}
+        {show_reset ? (
+          <div  className="div_reset">
+          <button
+            className="btn_reset"
+            onClick={() => disptach(getAllProduct())}>Reset
+          </button>
+          </div>
+        ) : null}
       </div>
-   
-      <hr />
-   {  <div className="cards">
-        {currentProducts.map((el) =>   <Cards el={el} />)}
-        </div>}
+
+     
+      {
+        <div className="cards">
+          {currentProducts.map((el) => (
+            <Cards el={el}  key={el._id} />
+          ))}
+        </div>
+      }
       <div className="pagination">
         <button
           className="btnPrvs"
           onClick={handlePrevPage}
           disabled={currentPage === 1}
         >
-       Previous
+          Previous
         </button>
         {Array.from({ length: totalPages }, (_, index) => (
           <button

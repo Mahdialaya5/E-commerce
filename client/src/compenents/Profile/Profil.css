@@ -1,7 +1,7 @@
 .containerPfrl{
     position: absolute;
     top: 50px;
-    left: 350px;
+    left: 30%;
     width: 800px;
     height: 500px;
     background-color:rgb(90, 90, 186);
@@ -19,12 +19,17 @@
     margin-left: 20px;
 }
 .btnSttg{
-    position: relative;
+    position: absolute;
     top: 400px;
-    left:980px;
+    left:70%;
     padding: 2px;
     height: 60px;
     width: 110px;
     z-index: 50px;
     background-color:rgb(38 131 83);
+}
+@media (max-width: 830px) {
+    .containerPfrl{ 
+        top: 150px;
+    left: 2%;}
 }

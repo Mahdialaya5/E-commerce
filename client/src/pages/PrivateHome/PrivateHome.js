@@ -5,7 +5,7 @@ import Products from '../../compenents/Products/Products'
 function PrivateHome() {
   return (
     <>
-    <SideBar/>
+    <SideBar  />
     <Products/>
     </>
   )
