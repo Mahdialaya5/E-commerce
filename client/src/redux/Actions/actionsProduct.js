@@ -27,7 +27,6 @@ export const getAllProduct = () => async (dispatch) => {
     dispatch({ type: GET_PRODUCT_SUCCESS, payload: response.data });
   } catch (error) {
     dispatch({ type: GET_PRODUCT_FAIL, payload: error });
-    console.log(error);
   }
 };
 export const addProduct = (productBody, navigate) => async (dispatch) => {
@@ -45,7 +44,7 @@ export const addProduct = (productBody, navigate) => async (dispatch) => {
     dispatch(getAllProduct());
     navigate("/products");
   } catch (err) {
-    console.log(err);
+    
     dispatch({
       type: ADD_PRODUCT_FAIL,
       payload: err.message,
@@ -81,7 +80,7 @@ export const getOneProduct = (id) => async (dispatch) => {
       payload: res.data.product,
     });
   } catch (err) {
-    console.log(err);
+    
     dispatch({
       type: GET_ONEPRODUCT_FAIL,
       payload: err.message,
@@ -97,7 +96,7 @@ export const editProduct = (id, productBody, navigate) => async (dispatch) => {
       productBody,
       { headers: { Authorization: `Bearer ${token}` } }
     );
-    console.log(resProduct);
+
     dispatch({
       type: EDIT_PRODUCT_SUCCESS,
       payload: resProduct.data.Product,
@@ -105,7 +104,7 @@ export const editProduct = (id, productBody, navigate) => async (dispatch) => {
     dispatch(getAllProduct());
     navigate("/profile");
   } catch (err) {
-    console.log(err);
+    
     dispatch({
       type: EDIT_PRODUCT_FAIL,
       payload: err.message,
@@ -124,7 +123,7 @@ export const deleteProduct = (id) => async (dispatch) => {
     });
     dispatch(getAllProduct());
   } catch (error) {
-    console.log(error);
+   
     dispatch({
       type: DELETE_ONEPRODUCT_FAIL,
     });

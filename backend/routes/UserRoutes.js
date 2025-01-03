@@ -57,20 +57,15 @@ router.get("/current", isAuth(), (req, res) => {
 });
 //edituser => private
 router.put( "/:id", upload("user").single("file"),isAuth(),async (req, res) => {
-    const { email, newpassword, password } = req.body;
     try {
-      if (newpassword && password) {
-        // validator current password
-        const existUser = await User.findOne({ email });
-        const isMatched = await bcrypt.compare(password, existUser.password);
-    if (isMatched) {
-          // bcrypt new password
-          const hashednewpassword = await bcrypt.hash(newpassword, 10);
+      const {  newpassword,password} = req.body;
+      if (newpassword && password&&newpassword===password) {
+       const hashednewpassword = await bcrypt.hash(newpassword, 10);
           req.body.password = hashednewpassword;
         } else {
           return res.status(400).send({ msg: "Current password not matched!" });
         }
-      }
+      
       const result = await User.updateOne(
         { _id: req.params.id },
         { ...req.body }
@@ -84,10 +79,10 @@ router.put( "/:id", upload("user").single("file"),isAuth(),async (req, res) => {
         await UserUpdated.save();
       }
 
-      if (result.modifiedCount || req.file || req.password) {
-        return res.send({ msg: "update success", user: UserUpdated });
+      if (result.modifiedCount || req.file) {
+        return res.status(203).send({ msg: "update success", user: UserUpdated });
       }
-      return res.status(400).send({ msg: " aleardy update " });
+      return res.status(400).send({ msg: " Aleardy update " });
     } catch (error) {
       return res.status(500).send(error.message);
     }

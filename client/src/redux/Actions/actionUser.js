@@ -61,7 +61,6 @@ export const getCurrent = () => async (dispatch) => {
       headers: { Authorization: `Bearer ${token}` },
     });
     dispatch({ type: GET_CURRENT_SUCCESS, payload: res.data });
-    console.log(res.data);
   } catch (error) {
     dispatch({ type: GET_CURRENT_FAIL, payload: error });
   }
@@ -80,14 +79,14 @@ export const editUser = (id, userBody, navigate) => async (dispatch) => {
       userBody,
       { headers: { Authorization: `Bearer ${token}` } }
     );
-    console.log(resUser);
+  
     dispatch({
       type: EDIT,
       payload: resUser.data,
     });
     navigate("/profile");
   } catch (err) {
-    console.log(err);
+   
     dispatch({
       type: EDIT_FAIL,
       payload: err.response.data,
@@ -107,7 +106,7 @@ export const getAllUsers = () => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-    console.log(err);
+
     dispatch({
       type: GET_ALLUSERS_FAIL,
       payload: err.message,

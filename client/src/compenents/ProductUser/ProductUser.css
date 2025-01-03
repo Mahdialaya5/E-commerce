@@ -1,10 +1,8 @@
 .ProductUser{
     background-color: rgb(227, 226, 226);
-    width: 280px;
+    width: 60%;
+    margin: 2%;
     height: 350px;
-position:absolute;
-left: 600px;
-top: 120px;
 border-radius: 3%;
 overflow-x: hidden;
 }

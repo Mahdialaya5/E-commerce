@@ -18,21 +18,22 @@ function Profile() {
     dispatch(getAllProduct())
   }, [])
   
- 
+
 
   return (
     <>
        <div  className='containerPfrl'>
      <div className='flxPrf'  >
    
-      <h2  className='NamePrf'>{user&&user.name?.slice(0,1).toUpperCase()}{user.name?.slice(1)}</h2>
+      <h2  className='NamePrf'>{user.name}</h2>
       </div>
 
-      {user.img? <img src={user.img} alt='profile' style={{width:"150px",borderRadius:"20%",position:'relative',bottom:"60px",left:"7px",height:"200px"}}  />: <img  src={img} alt='profile' style={{width:"150px",borderRadius:"20%",position:'relative',bottom:"60px",left:"7px"}} />}
+      {user.img? <img src={user.img} alt='profile' style={{width:"150px",borderRadius:"20%",height:"200px"}}  />: <img  src={img} alt='profile' style={{width:"150px",borderRadius:"20%"}} />}
       <h3  className='desc'>profil of {user.role}</h3>
-      </div>
+    
       {user.role==="company" && productsbyuser!=[]  ?  <ProductUser/>:null}
-     <Link  to={'/profileSettings'} > <button   className='btnSttg'  >profile Settings</button></Link>
+     <Link  to='/profileSettings' > <button   className='btnSttg'  >profile Settings</button></Link>
+     </div>
     </>
   )
 }
