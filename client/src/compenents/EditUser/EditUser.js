@@ -23,7 +23,7 @@ function EditUser() {
   useEffect(() => { 
     dispatch(getCurrent());
     setupdate(user);
-  }, []);
+  }, [dispatch]);
 
   const handleclick = () => {
     if (currentpassword && newPassword.length >= 6) {
@@ -33,7 +33,7 @@ function EditUser() {
       data.append("password", currentpassword);
       data.append("newpassword", newPassword);
       data.append("file", image);
-      console.log(data);
+
       dispatch(editUser(user._id, data, naviagte));
     }
     if (newPassword && currentpassword === "") {
@@ -58,7 +58,7 @@ function EditUser() {
     <div className="EditUser">
       <div className="edituser" id="formedit">
         <div className="form-floating ">
-          <label style={{ color: "#ebe71c" }} for="floatingInput">
+          <label style={{ color: "white" }} for="floatingInput">
             NEW USER NAME
           </label>
           <input
@@ -70,7 +70,7 @@ function EditUser() {
           />
         </div>
         <div className="form-floating">
-          <label style={{ color: "#ebe71c" }} for="floatingInput">
+          <label style={{ color: "white" }} for="floatingInput">
             Change photo{" "}
           </label>
           <input
@@ -87,7 +87,7 @@ function EditUser() {
       </div>
       <div className="edit_password">
         <div className="form-floating ">
-          <label style={{ color: "#ebe71c" }} for="floatingInput">
+          <label style={{ color: "white" }} for="floatingInput">
             Current passowrd
           </label>
           <input
@@ -101,7 +101,7 @@ function EditUser() {
        
         </div>
         <div className="form-floating ">
-          <label style={{ color: "#ebe71c" }} for="floatingInput">
+          <label style={{ color: "white" }} for="floatingInput">
             New passowrd
           </label>
           <input
@@ -127,7 +127,7 @@ function EditUser() {
                 return
               </button>
             </Link>
-            <p style={{ color: "#ebe71c" }}>
+            <p style={{ color: "red" }}>
           {error ? error : err ? err.msg : null}
         </p>
             </div>

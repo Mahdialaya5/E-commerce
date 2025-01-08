@@ -11,7 +11,7 @@ function Addproduct() {
   const [Category, setCategory] = useState("pc")
   const navigate = useNavigate()
   const dispatch = useDispatch()
-console.log(user._id);
+
   const handleClick=(e)=>{
     e.preventDefault();
 
@@ -26,7 +26,7 @@ console.log(user._id);
 
 
 return (
-    <div  id='backH' >
+    <div className='backH' >
     <div id='login' >
    <div className="background">
      <div className="shape" />
@@ -46,7 +46,7 @@ return (
       <option  value={"tablette"}  >Tablette</option>
      </select>
    
-     <button id='b' onClick={handleClick}  >save</button>
+     <button className='b' onClick={handleClick}  >save</button>
      <div className="social">
        <Link  to={"/products"} >return</Link>
      </div>

@@ -1,47 +1,51 @@
-.EditUser{
-    display: flex;
-    position: absolute;
-    flex-direction: column;
-    gap:25px;
-    top: 29px;
-    left: 30%;
-    width: 60%;
-    height: 450px;
-    background-color:rgb(90, 90, 186);
-    border-radius: 2%;
+.EditUser {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  gap: 25px;
+  top: 29px;
+  left: 30%;
+  width: 60%;
+  height: auto;
+  padding: 2px;
+  background-color: rgb(90, 90, 186);
+  border-radius: 13px;
 }
-.edituser,.edit_password{
-    display: flex;
-    justify-content: space-around;
-    gap:1%
+.edituser,.edit_password {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1%;
 }
-#save{
-    position: relative;
-    top: 100px;
+#save {
+  position: relative;
+  top: 100px;
 }
-.btns_edit_user{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap:10px
+.btns_edit_user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
-.inpt{
-    width: 80%;
-    border: none;
-    background-color: gray;
+.inpt {
+  width: 80%;
+  border: none;
+  background-color: gray;
 }
-.btnEdituser{
-    width: 30%;
-    border-radius: 13px;
-    height: 50px;
-    border: none;
-    color: aliceblue;
-    text-align: center;
-    background-color: rgb(116, 209, 136);
+.btnEdituser {
+  width: 33%;
+  border-radius: 13px;
+  height: 50px;
+  border: none;
+  color: aliceblue;
+  text-align: center;
+  background-color: rgb(116, 209, 136);
 }
 
 @media (max-width: 830px) {
-    .EditUser{ 
-        top: 150px;
-    left: 2%;}
+  .EditUser {
+    top: 133px;
+    left: 13%;
+    width: 80%;
+  }
 }

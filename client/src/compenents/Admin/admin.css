@@ -1,33 +1,35 @@
-.containerAdm{
-    position: absolute;
-    top: 50px;
-    width: 100px;
-    left: 350px;
-    width: 800px;
-    height: 500px;
-    background-color:rgb(138, 138, 152);
-    border-top-left-radius: 2%;
-    overflow-y: scroll;
-    overflow-x: hidden;
+.containerAdm {
+  position: absolute;
+  top: 29px;
+  left: 30%;
+  width: 60%;
+  height: 500px;
+  background-color: rgb(138, 138, 152);
+  border-top-left-radius: 2%;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
-.titlAdm{
-    position: relative;
-  left:12em ;
-    color: rgb(120, 32, 32);
-}
-.userlist{
-    margin-left: 8px;
-    font-size: x-large;
-    color: brown;
+.titlAdm {
+  color: rgb(16, 100, 179);
+  font-size: x-large;
 }
 
-table, th, td {
-    border:1px solid black;
-  }
+table,
+th,
+td {
+  border: 1px solid black;
+}
 table {
-position: relative;
-bottom: 20px;
- height: 550px;
-    width: 100%;
-
+  position: relative;
+  bottom: 20px;
+  height: 550px;
+  width: 100%;
+}
+@media (max-width: 830px) {
+  .containerAdm {
+    top: 133px;
+    left: 13%;
+    width: 80%;
+    overflow-x: auto;
+  }
 }

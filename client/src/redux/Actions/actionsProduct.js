@@ -51,11 +51,9 @@ export const addProduct = (productBody, navigate) => async (dispatch) => {
     });
   }
 };
-
 export const searchProduct = (searchPRDT) => {
   return { type: SEARCHPRDT, payload: searchPRDT };
 };
-
 export const searchPc = () => {
   return { type: SEARCHPC };
 };
@@ -65,7 +63,6 @@ export const searchPhone = () => {
 export const searchTablette = () => {
   return { type: SEARCHTABETTE };
 };
-
 export const getOneProduct = (id) => async (dispatch) => {
   const token = localStorage.getItem("token");
   dispatch({
@@ -87,7 +84,6 @@ export const getOneProduct = (id) => async (dispatch) => {
     });
   }
 };
-
 export const editProduct = (id, productBody, navigate) => async (dispatch) => {
   const token = localStorage.getItem("token");
   try {
@@ -111,7 +107,6 @@ export const editProduct = (id, productBody, navigate) => async (dispatch) => {
     });
   }
 };
-
 export const deleteProduct = (id) => async (dispatch) => {
   const token = localStorage.getItem("token");
   try {
