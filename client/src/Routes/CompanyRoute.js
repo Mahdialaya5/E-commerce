@@ -7,9 +7,9 @@ function CompanyRoute({ children }) {
   const checktoken = localStorage.getItem("token");
 
   return (
-    <div>
+    <>
       {checktoken && user.role == "company" ? children : <Navigate to="/" />}
-    </div>
+    </>
   );
 }
 

@@ -7,7 +7,7 @@ const { registerCheck, loginCheck, validator} = require("../middlewares/Validato
 const isAuth = require("../middlewares/isAuth");
 const upload = require("../utils/multer");
 const isAdmin = require("../middlewares/isAdmin");
-
+const cloudinary = require("../config/cloudinary")
 //register
 router.post("/register", registerCheck(), validator, async (req, res) => {
   const { email, password, role } = req.body;
@@ -74,8 +74,12 @@ router.put( "/:id", upload("user").single("file"),isAuth(),async (req, res) => {
       UserUpdated.newpassword = undefined;
       // change photo
       if (req.file) {
-        const url = `${req.protocol}://${req.get("host")}/${req.file.path}`;
-        UserUpdated.img = url;
+         const result = await cloudinary.uploader.upload(req.file.path, {
+                upload_preset: "wmw1fun5",
+                allowed_formats: ["png", "jpg", "jpeg", "svg", "ico", "jfif", "webp"],
+              });
+    
+        UserUpdated.img = result.secure_url;
         await UserUpdated.save();
       }
 

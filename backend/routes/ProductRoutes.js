@@ -4,14 +4,16 @@ const Product = require("../models/Product");
 const upload = require("../utils/multer");
 const isAuth = require("../middlewares/isAuth");
 const isCompany = require("../middlewares/isCompany");
-
+const cloudinary = require("../config/cloudinary")
 //add new product => private for company
 router.post("/",upload("products").single("file"),isAuth(),isCompany, async (req, res) => {
     try {
-      console.log(req.file);
-      const url = `${req.protocol}://${req.get("host")}/${req.file.path}`;
+      const result = await cloudinary.uploader.upload(req.file.path, {
+        upload_preset: "wmw1fun5",
+        allowed_formats: ["png", "jpg", "jpeg", "svg", "ico", "jfif", "webp"],
+      });
+      const url = result.secure_url;
       const newProduct = new Product(req.body);
-      console.log(url);
       newProduct.img = url;
       await newProduct.save();
       return res
@@ -52,8 +54,11 @@ router.put( "/:id",upload("products").single("file"),isAuth(),isCompany,async (r
       );
       productUpdated = await Product.findOne({ _id: req.params.id });
       if (req.file) {
-        const url = `${req.protocol}://${req.get("host")}/${req.file.path}`;
-        productUpdated.img = url;
+        const result = await cloudinary.uploader.upload(req.file.path, {
+          upload_preset: "wmw1fun5",
+          allowed_formats: ["png", "jpg", "jpeg", "svg", "ico", "jfif", "webp"],
+        });
+        productUpdated.img =result.secure_url;
         await productUpdated.save();
       }
       if (result.modifiedCount || req.file) {

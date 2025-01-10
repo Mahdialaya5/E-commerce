@@ -7,9 +7,9 @@ function AdminRoute({ children }) {
   const checktoken = localStorage.getItem("token");
 
   return (
-    <div>
+    <>
       {checktoken && user.role == "admin" ? children : <Navigate to="/" />}
-    </div>
+    </>
   );
 }
 

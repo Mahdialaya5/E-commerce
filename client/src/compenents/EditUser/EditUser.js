@@ -23,7 +23,7 @@ function EditUser() {
   useEffect(() => { 
     dispatch(getCurrent());
     setupdate(user);
-  }, [dispatch]);
+  }, [dispatch,user]);
 
   const handleclick = () => {
     if (currentpassword && newPassword.length >= 6) {

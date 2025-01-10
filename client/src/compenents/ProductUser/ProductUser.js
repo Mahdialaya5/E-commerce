@@ -7,7 +7,7 @@ import { deleteProduct } from '../../redux/Actions/actionsProduct';
 function ProductUser() {
   const user = useSelector(state => state.userReducer.User)
   const Products=useSelector(state=>state.productReducer.products)
-  const productsbyuser=Products.filter((el)=>el.seller._id==user._id)
+  const productsbyuser=Products.filter((el)=>el.seller._id===user._id)
   const disptach=useDispatch()
   return (
     <div  className='ProductUser'  >

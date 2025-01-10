@@ -67,7 +67,7 @@ function App() {
           path={"/editproduct/:id"}
           element={
             <CompanyRoute>
-              <EditProduct />
+              <EditProduct/>
             </CompanyRoute>
           }
         />
