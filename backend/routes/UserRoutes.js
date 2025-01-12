@@ -7,7 +7,7 @@ const { registerCheck, loginCheck, validator} = require("../middlewares/Validato
 const isAuth = require("../middlewares/isAuth");
 const upload = require("../utils/multer");
 const isAdmin = require("../middlewares/isAdmin");
-const cloudinary = require("../config/cloudinary")
+
 //register
 router.post("/register", registerCheck(), validator, async (req, res) => {
   const { email, password, role } = req.body;
@@ -31,7 +31,7 @@ router.post("/register", registerCheck(), validator, async (req, res) => {
   }
 });
 //login user
-router.post("/login", loginCheck(), validator, async (req, res) => {
+router.post("/login",loginCheck(),validator, async (req, res) => {
   const { email, password } = req.body;
   try {
     const existUser = await User.findOne({ email });
@@ -52,11 +52,11 @@ router.post("/login", loginCheck(), validator, async (req, res) => {
   }
 });
 // get current user ==>private
-router.get("/current", isAuth(), (req, res) => {
+router.get("/current",isAuth(), (req, res) => {
   return res.status(200).send({ user: req.user });
 });
 //edituser => private
-router.put( "/:id", upload("user").single("file"),isAuth(),async (req, res) => {
+router.put( "/:id",upload.single("file"),isAuth(),async (req, res) => {
     try {
       const {  newpassword,password} = req.body;
       if (newpassword && password&&newpassword===password) {
@@ -73,16 +73,10 @@ router.put( "/:id", upload("user").single("file"),isAuth(),async (req, res) => {
       const UserUpdated = await User.findOne({ _id: req.params.id });
       UserUpdated.newpassword = undefined;
       // change photo
-      if (req.file) {
-         const result = await cloudinary.uploader.upload(req.file.path, {
-                upload_preset: "wmw1fun5",
-                allowed_formats: ["png", "jpg", "jpeg", "svg", "ico", "jfif", "webp"],
-              });
-    
-        UserUpdated.img = result.secure_url;
+      if (req.file) { 
+        UserUpdated.img =req.file.path;
         await UserUpdated.save();
       }
-
       if (result.modifiedCount || req.file) {
         return res.status(203).send({ msg: "update success", user: UserUpdated });
       }

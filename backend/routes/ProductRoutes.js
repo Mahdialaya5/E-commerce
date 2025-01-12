@@ -4,17 +4,12 @@ const Product = require("../models/Product");
 const upload = require("../utils/multer");
 const isAuth = require("../middlewares/isAuth");
 const isCompany = require("../middlewares/isCompany");
-const cloudinary = require("../config/cloudinary")
-//add new product => private for company
-router.post("/",upload("products").single("file"),isAuth(),isCompany, async (req, res) => {
+
+
+router.post("/",upload.single("file"),isAuth(),isCompany, async (req, res) => {
     try {
-      const result = await cloudinary.uploader.upload(req.file.path, {
-        upload_preset: "wmw1fun5",
-        allowed_formats: ["png", "jpg", "jpeg", "svg", "ico", "jfif", "webp"],
-      });
-      const url = result.secure_url;
       const newProduct = new Product(req.body);
-      newProduct.img = url;
+      newProduct.img = req.file.path;
       await newProduct.save();
       return res
         .status(201)
@@ -46,7 +41,7 @@ router.get("/:id", isAuth(), isCompany, async (req, res) => {
 });
 
 //edit product => private for company
-router.put( "/:id",upload("products").single("file"),isAuth(),isCompany,async (req, res) => {
+router.put( "/:id",upload.single("file"),isAuth(),isCompany,async (req, res) => {
     try {
       const result = await Product.updateOne(
         { _id: req.params.id },
@@ -54,16 +49,12 @@ router.put( "/:id",upload("products").single("file"),isAuth(),isCompany,async (r
       );
       productUpdated = await Product.findOne({ _id: req.params.id });
       if (req.file) {
-        const result = await cloudinary.uploader.upload(req.file.path, {
-          upload_preset: "wmw1fun5",
-          allowed_formats: ["png", "jpg", "jpeg", "svg", "ico", "jfif", "webp"],
-        });
-        productUpdated.img =result.secure_url;
+        productUpdated.img = req.file.path;
         await productUpdated.save();
       }
       if (result.modifiedCount || req.file) {
         return res
-          .status(203)
+          .status(202)
           .send({ msg: "update suuccess", product: productUpdated });
       }
       return res.status(400).send({ msg: " aleardy update " });
