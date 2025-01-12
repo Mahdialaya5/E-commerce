@@ -21,7 +21,7 @@ export const getAllProduct = () => async (dispatch) => {
   dispatch({ type: GET_PRODUCT_LOADING });
   try {
     const token = localStorage.getItem("token");
-    const response = await axios.get("http://localhost:5000/api/product/", {
+    const response = await axios.get("https://e-commerce-api-mahdi.vercel.app/api/product/", {
       headers: { Authorization: `Bearer ${token}` },
     });
     dispatch({ type: GET_PRODUCT_SUCCESS, payload: response.data });
@@ -33,7 +33,7 @@ export const addProduct = (productBody, navigate) => async (dispatch) => {
   const token = localStorage.getItem("token");
   try {
     const resProduct = await axios.post(
-      "http://localhost:5000/api/product/",
+      "https://e-commerce-api-mahdi.vercel.app/api/product/",
       productBody,
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -69,7 +69,7 @@ export const getOneProduct = (id) => async (dispatch) => {
     type: GET_PRODUCT_LOADING,
   });
   try {
-    const res = await axios.get(`http://localhost:5000/api/product/${id}`, {
+    const res = await axios.get(`https://e-commerce-api-mahdi.vercel.app/api/product/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     dispatch({
@@ -88,7 +88,7 @@ export const editProduct = (id, productBody, navigate) => async (dispatch) => {
   const token = localStorage.getItem("token");
   try {
     const resProduct = await axios.put(
-      `http://localhost:5000/api/product/${id}`,
+      `https://e-commerce-api-mahdi.vercel.app/api/product/${id}`,
       productBody,
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -110,7 +110,7 @@ export const editProduct = (id, productBody, navigate) => async (dispatch) => {
 export const deleteProduct = (id) => async (dispatch) => {
   const token = localStorage.getItem("token");
   try {
-    await axios.delete(`http://localhost:5000/api/product/${id}`, {
+    await axios.delete(`https://e-commerce-api-mahdi.vercel.app/api/product/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     dispatch({

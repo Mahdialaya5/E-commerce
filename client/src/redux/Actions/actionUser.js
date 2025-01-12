@@ -17,7 +17,7 @@ import {
 export const addUser = (userBody, navigate) => async (dispatch) => {
   try {
     const resUser = await axios.post(
-      "http://localhost:5000/api/user/register",
+      "https://e-commerce-api-mahdi.vercel.app/api/user/register",
       userBody
     );
     dispatch({
@@ -38,7 +38,7 @@ export const addUser = (userBody, navigate) => async (dispatch) => {
 export const loginUser = (loginUser, navigate) => async (dispatch) => {
   try {
     const res = await axios.post(
-      "http://localhost:5000/api/user/login",
+      "https://e-commerce-api-mahdi.vercel.app/api/user/login",
       loginUser
     );
     dispatch({ type: LOGIN_SUCCESS, payload: res.data });
@@ -57,7 +57,7 @@ export const getCurrent = () => async (dispatch) => {
   const token = localStorage.getItem("token");
 
   try {
-    const res = await axios.get("http://localhost:5000/api/user/current", {
+    const res = await axios.get("https://e-commerce-api-mahdi.vercel.app/api/user/current", {
       headers: { Authorization: `Bearer ${token}` },
     });
     dispatch({ type: GET_CURRENT_SUCCESS, payload: res.data });
@@ -75,7 +75,7 @@ export const editUser = (id, userBody, navigate) => async (dispatch) => {
 
   try {
     const resUser = await axios.put(
-      `http://localhost:5000/api/user/${id}`,
+      `https://e-commerce-api-mahdi.vercel.app/api/user/${id}`,
       userBody,
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -98,7 +98,7 @@ export const getAllUsers = () => async (dispatch) => {
   const token = localStorage.getItem("token");
 
   try {
-    const res = await axios.get("http://localhost:5000/api/user/admin", {
+    const res = await axios.get("https://e-commerce-api-mahdi.vercel.app/api/user/admin", {
       headers: { Authorization: `Bearer ${token}` },
     });
     dispatch({
